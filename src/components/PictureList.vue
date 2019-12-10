@@ -5,13 +5,29 @@
             .taskbarTwo.task
         .buttons
             .tinySlideBar
-            .buttonsField
+            .button
+                .share
+                    img(src="@/../public/image/share.png")
+                .buttonsField
+                    .prev 
+                        .rectanglePrev
+                        .triangle            
+                    .change
+                        .play
+                            
+                        .pause                            
+                    .next
+                        .triangleNext 
+                        .rectangle
+                .hart
+                    img(src="@/../public/image/like.png")
+                    
 </template>
 
 <script>
 import {mapState} from 'vuex'
 export default {
-    name: "PictureList",
+    name: "PictureList",    
     computed: {
         ...mapState([
             'songs',
@@ -52,12 +68,59 @@ export default {
             width: 100%;
             background-color: #fff;
         }
-        .buttonsField {
-            height: 100%;
-            width: 100%;
+        .button {
+            display: flex;
+            flex-direction: row;
             background-color:#E7E6ED;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
             border-radius: 0 0 25px 25px;
+            .share {
+                width: 15%;
+                img {
+                    width: 50%
+                }
+            }
+            .hart {
+                width: 15%;
 
+                img { 
+                    width: 50%;
+                }
+            }        
+            .buttonsField {
+                height: 100%;
+                width: 60%;
+                border-radius: 0 0 25px 25px;
+                display: flex;
+                justify-content: space-between;
+                justify-content: center;
+                align-items: center;
+                // padding-top: 20px;
+                .prev {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #6A5C9C;
+                    margin: 5px
+                }
+                .next {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #6A5C9C;
+                    margin: 5px
+                }
+                .change{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: #6A5C9C;
+                    margin: 5px
+                }
+
+            }
         }
     }
 

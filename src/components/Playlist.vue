@@ -1,11 +1,7 @@
 <template lang="pug">
 .playlist
     .container
-        .mainBox
-            .days(
-                          v-for="count in songs"
-                          :key="count"
-                        ) {{ count.artist }}
+        .mainBox           
             .violetBox
                 PictureList
                 SongsList
@@ -14,7 +10,6 @@
 <script>
 import PictureList from "@/components/PictureList.vue"
 import SongsList from "@/components/SongsList.vue"
-import {mapState} from 'vuex'
 export default {
     name: "Playlist",
     data () {
@@ -26,11 +21,6 @@ export default {
         PictureList,
         SongsList
     },
-    computed: {
-        ...mapState([
-            'songs',
-        ])
-    }
 }
 </script>
 
