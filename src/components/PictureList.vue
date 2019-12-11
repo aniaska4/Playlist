@@ -23,10 +23,9 @@
                     .prev 
                         .rectanglePrev
                         .triangle            
-                    .change
-                        .play
-                            
-                        .pause
+                    .change                        
+                        .play(v-show="paused" @click="play")                     
+                        .pause(v-show="playing" @click="pause")
                             .one 
                             .two                          
                     .next
@@ -44,8 +43,26 @@ export default {
     computed: {
         ...mapState([
             'songs',
-        ])
+        ]),
+         paused() {
+            return !this.playing;
+        }
+    },
+    data() {
+        return {
+            playing: false,
+        }
+  },
+    methods: {
+       play() {
+        this.playing = true;
+    },
+        pause() {
+        this.playing = false;
+        }
+
     }
+    
 }
 </script>
 
@@ -67,16 +84,6 @@ export default {
             .navbuttons {
                 width: 70%;
                 height: 30px;
-                .oneBut{
-
-                }
-                .twoBut{
-
-                }
-                .treeBut{
-
-                }
-
             }
                    
             .burgerMenu{
@@ -186,8 +193,6 @@ export default {
                     }                        
                     .pause{
                         position: relative;
-                        
-                        display: none;
                         .one{
                             width: 4px; 
                             height: 22px; 
