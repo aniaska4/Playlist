@@ -1,19 +1,28 @@
 <template>
   <div id="app">
-    <Playlist />
+    <app-playlist></app-playlist>
   </div>
 </template>
 
 <script>
 import Playlist from "@/components/Playlist.vue"
 export default {
-  components: { Playlist },
-  name: "App",
-  mounted(){
-    this.$store.dispatch('loadSongs')
-  }
+  components: {
+    'app-playlist': Playlist
+  },
+
+  name: "App"
 }
 </script>
+
+name
+props
+data
+computed
+watch
+methods
+before...
+components
 
 <style lang="scss">
 body {

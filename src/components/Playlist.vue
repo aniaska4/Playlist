@@ -3,24 +3,81 @@
     .container
         .mainBox           
             .violetBox
-                PictureList
-                SongsList
+                | {{ currentSongIndex }}
+                PictureList(
+                    @welcome="isSongListOpen = true"
+                    v-bind="selectedSong"
+                )
+                SongsList(
+                    @welcome="isSongListOpen = true"
+                    @close="isSongListOpen = false"
+                    @selectSong="selectSong"
+                    :is-open="isSongListOpen"
+                    :songs="songs"
+                )
 </template>
+
+// Playlist
+//   Playlist.vue
+//   Songs
+//     Songs.vue
+//   Pictures
 
 <script>
 import PictureList from "@/components/PictureList.vue"
 import SongsList from "@/components/SongsList.vue"
 export default {
     name: "Playlist",
+
     data () {
-    return {
-      
+        return {
+            isSongListOpen: false,
+            currentSongIndex: 0
         }
     },
+
+    computed: {
+        songs() {
+            return this.$store.state.songs;
+        },
+
+        selectedSong() {
+            return this.songs[this.currentSongIndex] || {};
+        }
+    },
+
+    methods: {
+        selectSong(index) {
+            this.currentSongIndex = index;
+        },
+        nextSong() {
+            const nextSongIndex = this.currentSongIndex + 1;
+            if (nextSongIndex < this.songs.lenght - 1) {
+                this.currentSongIndex += 1;
+            }
+            else {
+                this.currentSongIndex = 0;
+            }
+        }
+    },
+
     components: {
         PictureList,
         SongsList
     },
+
+    beforeMount() {
+        this.isLoading = true;
+        this.errorMessage = '';
+
+        this.$store.dispatch('loadSongs')
+            .catch(() => {
+                this.errorMessage = 'asdasd'
+            })
+            .finally(() => {
+                this.isLoading = false;
+            });
+    }
 }
 </script>
 

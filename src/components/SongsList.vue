@@ -1,18 +1,23 @@
 <template lang="pug">
-    .songsList.box 
+    .songsList.box(v-if="isOpen")
             .titleBox
-                .arrow
+                .arrow(@click="$emit('close')")
                     .circle
                         img(src="@/../public/image/arrow.jpg")
                 .title
                     h3 Playlist
-            .lists(v-for="count in songs")
+            .lists(
+                v-for="(song, index) in songs"
+                :key="song.artist + song.title"
+                @click="$emit('selectSong', index)"
+                :class="{ 'is-active': index === currentSongIndex }"
+            )
                 .one
                     .artist
-                        span.time {{count.time}} |
-                        span.name {{ count.artist}}
+                        span.time {{ song.time }} |
+                        span.name {{ song.artist }}
                     .title
-                        span {{count.title}}
+                        span {{ song.title }}
                 .two
                     .share
                         img(src="@/../public/image/share.png")
@@ -20,15 +25,23 @@
                         img(src="@/../public/image/like.png")
 </template>
 <script>
-import {mapState} from 'vuex'
 export default {
-    name: "SongsList",        
-    computed: {
-        ...mapState([
-            'songs',
-        ])
-    }
-    
+    name: "SongsList",
+
+    props: {
+        isOpen: {
+            type: Boolean,
+            required: true
+        },
+        songs: {
+            type: Array,
+            required: true
+        }
+    },
+
+    data() {
+        return {}
+    }    
 }
 </script>
 

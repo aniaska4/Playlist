@@ -1,4 +1,6 @@
 <template lang="pug">
+    //- transition(name="asdasd")
+    //-     div(v-if="...")
     .pictureList.box
         .pictures
             .taskbarOne.task
@@ -9,7 +11,7 @@
                         img()
                     .treeBut
                         img()
-                .burgerMenu
+                .burgerMenu(v-on:click="$emit('welcome')")
                     span
                     span
                     span
@@ -40,6 +42,17 @@
 import {mapState} from 'vuex'
 export default {
     name: "PictureList",    
+    props: {
+        title: {
+            type: String,
+            default: ''
+        },
+        artist: {
+            type: String,
+            default: ''
+        }
+    },
+    
     computed: {
         ...mapState([
             'songs',
@@ -51,16 +64,20 @@ export default {
     data() {
         return {
             playing: false,
+            show: true,
+            showList: true,
         }
-  },
-    methods: {
-       play() {
-        this.playing = true;
     },
+    methods: {
+        play() {
+        this.playing = true;
+     },
         pause() {
         this.playing = false;
-        }
-
+     },
+     someMethod() {
+         this.$emit('signal')
+     }
     }
     
 }
