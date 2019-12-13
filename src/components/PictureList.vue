@@ -1,45 +1,44 @@
 <template lang="pug">
-    //- transition(name="asdasd")
-    //-     div(v-if="...")
-    .pictureList.box
-        .pictures
-            .taskbarOne.task
-                .navbuttons
+    .picture.box
+        .picture__pictures
+            .picture__taskbarOne.task
+                .picture__navbuttons
                     .oneBut
                         img()
                     .twoBut
                         img()
                     .treeBut
                         img()
-                .burgerMenu(v-on:click="$emit('welcome')")
+                .picture__burgerMenu(v-on:click="$emit('welcome')")
                     span
                     span
                     span
-            .taskbarTwo.task
-        .buttons
-            .tinySlideBar
-            .button
-                .share
+            .picture__taskbarTwo.task
+        .picture__buttons
+            .picture__tinySlideBar
+            .picture__img
+                img(src="@/../public/image/speaker.svg")
+            .picture__button
+                .picture__share
                     img(src="@/../public/image/share.png")
-                .buttonsField
-                    .prev 
+                .picture__buttonsField
+                    button.prev(:click="$emit('prevSong')")
                         .rectanglePrev
                         .triangle            
                     .change                        
-                        .play(v-show="paused" @click="play")                     
-                        .pause(v-show="playing" @click="pause")
+                        button.play(v-show="paused" @click="play")                     
+                        button.pause(v-show="playing" @click="pause")
                             .one 
                             .two                          
-                    .next
+                    button.next(:click="$emit('nextSong')")
                         .triangleNext 
                         .rectangle
-                .hart
+                .picture__hart
                     img(src="@/../public/image/like.png")
                     
 </template>
 
 <script>
-import {mapState} from 'vuex'
 export default {
     name: "PictureList",    
     props: {
@@ -52,22 +51,25 @@ export default {
             default: ''
         }
     },
-    
+
     computed: {
-        ...mapState([
-            'songs',
-        ]),
+        songs() {
+            return this.$store.state.songs;
+        },
          paused() {
             return !this.playing;
         }
     },
+
     data() {
         return {
             playing: false,
             show: true,
             showList: true,
+            // show_component: true,
         }
     },
+
     methods: {
         play() {
         this.playing = true;
@@ -75,6 +77,7 @@ export default {
         pause() {
         this.playing = false;
      },
+     
      someMethod() {
          this.$emit('signal')
      }
@@ -84,26 +87,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pictureList {
+.picture {
     display: flex;
     flex-direction: column;
-    .pictures {
+    .picture__pictures {
         display: flex;
         flex-direction: column;
         justify-content: space-between;    
         height: 70%;
-        .taskbarOne {
+        .picture__taskbarOne {
             border-bottom: 1px solid black;            
             border-radius: 25px 25px 0 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            .navbuttons {
+            .picture__navbuttons {
                 width: 70%;
                 height: 30px;
             }
                    
-            .burgerMenu{
+            .picture__burgerMenu{
                 display: flex;
                 flex-direction: column;
                 width: 30%;
@@ -116,7 +119,7 @@ export default {
                 }
             }
         }
-        .taskbarTwo{
+        .picture__taskbarTwo{
             border-top: 1px solid black;
             border-bottom: 1px solid black;
         }
@@ -126,16 +129,31 @@ export default {
         }
 
     }
-    .buttons{
+    .picture__buttons{
         height: 30%;
         display: flex;
         flex-direction: column;
-        .tinySlideBar {
+        .picture__tinySlideBar {
             height: 7px;
             width: 100%;
             background-color: #fff;
+            background: linear-gradient(to right,white  80%,  rgb(255, 116, 116) 50%);                       
         }
-        .button {
+        .picture__img {
+            position: relative;
+            img{
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                top: -13px;
+                right: 60px;
+                background-color: white;
+
+border-radius: 50%;
+            }
+        }
+            
+        .picture__button {
             display: flex;
             flex-direction: row;
             background-color:#E7E6ED;
@@ -143,20 +161,20 @@ export default {
             align-items: center;
             height: 100%;
             border-radius: 0 0 25px 25px;
-            .share {
+            .picture__share {
                 width: 15%;
                 img {
                     width: 50%
                 }
             }
-            .hart {
+            .picture__hart {
                 width: 15%;
 
                 img { 
                     width: 50%;
                 }
             }        
-            .buttonsField {
+            .picture__buttonsField {
                 height: 100%;
                 width: 60%;
                 border-radius: 0 0 25px 25px;
@@ -172,6 +190,7 @@ export default {
                     background-color: #6A5C9C;
                     margin: 5px;
                     position: relative;
+                    border: none;
                     .rectanglePrev{
                         height: 0; 
                         border-top: 11px solid transparent; 
@@ -198,33 +217,41 @@ export default {
                     margin: 5px;
                     position: relative;
                     .play{
-                        border-top: 15px solid
-                        transparent;
-                        border-left: 22px solid
-                        white;
-                        border-bottom: 15px solid
-                        transparent;
+                        border-top: 15px solid transparent;
+                        border-left: 22px solid white;
+                        border-bottom: 15px solid transparent;
                         position: absolute;
-                        top: 10px;
-                        left: 18px;
+                        top: 9px;
+                        left: 17px;
+                        background-color: #6A5C9C;
+                        padding-left: 0;
+                        padding-right: 0;
+                        border-right-width: 0;
+                        margin: 0;
                     }                        
                     .pause{
                         position: relative;
+                        background-color: #6A5C9C;
+                        border: none;
+                        top: 18px;
+                        left: 10px;
+                        width: 20px;
+                        height: 25px;
                         .one{
                             width: 4px; 
                             height: 22px; 
                             background: white; 
                             position: absolute;
-                            top: 15px;
-                            left: 27px;
+                            top: -8px;
+                            left: 17px
                         }
                         .two {
                             width: 4px; 
                             height: 22px; 
                             background: white; 
                             position: absolute;
-                            top: 15px;
-                            left: 18px;
+                            top: -8px;
+                            left: 7px;
                         }
                     }
 
@@ -236,6 +263,7 @@ export default {
                     background-color: #6A5C9C;
                     margin: 5px;
                     position:relative;
+                    border: none;
                     .triangleNext {
                         width: 0; 
                         height: 0; 

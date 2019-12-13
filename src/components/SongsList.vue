@@ -1,27 +1,27 @@
 <template lang="pug">
-    .songsList.box(v-if="isOpen")
-            .titleBox
-                .arrow(@click="$emit('close')")
-                    .circle
+    .songs.box(v-if="isOpen")
+            .songs__titleBox
+                .songs__arrow(@click="$emit('close')")
+                    .songs__circle
                         img(src="@/../public/image/arrow.jpg")
-                .title
+                .songs__title
                     h3 Playlist
-            .lists(
+            .songs__lists(
                 v-for="(song, index) in songs"
                 :key="song.artist + song.title"
                 @click="$emit('selectSong', index)"
                 :class="{ 'is-active': index === currentSongIndex }"
             )
-                .one
-                    .artist
+                .songs__one
+                    .songs__artist
                         span.time {{ song.time }} |
                         span.name {{ song.artist }}
-                    .title
+                    .songs__title
                         span {{ song.title }}
-                .two
-                    .share
+                .songs__two
+                    .songs__share
                         img(src="@/../public/image/share.png")
-                    .hart
+                    .songs__hart
                         img(src="@/../public/image/like.png")
 </template>
 <script>
@@ -40,18 +40,20 @@ export default {
     },
 
     data() {
-        return {}
+        return {
+            
+        }
     }    
 }
 </script>
 
 <style lang="scss" scoped>
-.songsList {
+.songs {
     display: flex;
     flex-direction: column;
     background-color: #E7E6ED;
     color: #372A53;
-    .titleBox{
+    .songs__titleBox{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -59,11 +61,11 @@ export default {
         height: 50px;
         color: #6A5C9C;
         font-size: 600;
-        .arrow{
+        .songs__arrow{
             width: 30%;
             margin-left: 20px;
             margin-top: 12px;
-            .circle {
+            .songs__circle {
                 width: 30px;
                 height: 30px;
                 border-radius: 50%;
@@ -78,42 +80,42 @@ export default {
             }        
 
         }
-        .title {
+        .songs__title {
             width: 70%;
             margin-left: 15px;
         }
     }
-    .lists {
+    .songs__lists {
         margin: 10px 15px 10px 15px;
         border-bottom: 1px solid black;
         padding-bottom: 20px;
         display: flex;
         flex-direction: row;
-        .one {
+        .songs__one {
             display: flex;
             flex-direction: column;
             width: 80%;
-            .artist {
+            .songs__artist {
                 display: flex;
                 flex-direction: row;
                 padding-bottom: 10px;
                 font-size: 12px;
             }
-            .title {
+            .songs__title {
                 
             }
         }
-        .two {
+        .songs__two {
             display: flex;
             flex-direction: row;
             width: 17%;
             margin-top: 15px;
-            .share {
+            .songs__share {
                 img {
                     width: 50%
                 }
             }
-            .hart {
+            .songs__hart {
                 img { 
                     width: 50%;
                 }

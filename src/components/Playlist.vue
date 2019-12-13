@@ -8,20 +8,15 @@
                     @welcome="isSongListOpen = true"
                     v-bind="selectedSong"
                 )
-                SongsList(
-                    @welcome="isSongListOpen = true"
-                    @close="isSongListOpen = false"
-                    @selectSong="selectSong"
-                    :is-open="isSongListOpen"
-                    :songs="songs"
-                )
+                transition(name="slide")
+                    SongsList(
+                        @welcome="isSongListOpen = true"
+                        @close="isSongListOpen = false"
+                        @selectSong="selectSong"
+                        :is-open="isSongListOpen"
+                        :songs="songs"
+                    )
 </template>
-
-// Playlist
-//   Playlist.vue
-//   Songs
-//     Songs.vue
-//   Pictures
 
 <script>
 import PictureList from "@/components/PictureList.vue"
@@ -32,7 +27,7 @@ export default {
     data () {
         return {
             isSongListOpen: false,
-            currentSongIndex: 0
+            currentSongIndex: 0,
         }
     },
 
@@ -42,7 +37,7 @@ export default {
         },
 
         selectedSong() {
-            return this.songs[this.currentSongIndex] || {};
+            return this.songs[this.currentSongIndex];
         }
     },
 
@@ -54,6 +49,15 @@ export default {
             const nextSongIndex = this.currentSongIndex + 1;
             if (nextSongIndex < this.songs.lenght - 1) {
                 this.currentSongIndex += 1;
+            }
+            else {
+                this.currentSongIndex = 0;
+            }
+        },
+        prevSong() {
+            const prevSongIndex = this.currentSongIndex - 1;
+            if (prevSongIndex < this.songs.lenght - 1) {
+                this.currentSongIndex -= 1;
             }
             else {
                 this.currentSongIndex = 0;
@@ -72,7 +76,7 @@ export default {
 
         this.$store.dispatch('loadSongs')
             .catch(() => {
-                this.errorMessage = 'asdasd'
+                this.errorMessage = 'sorry, there is no songs at this moment'
             })
             .finally(() => {
                 this.isLoading = false;
@@ -112,6 +116,17 @@ export default {
         }
 
     }
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 
 
