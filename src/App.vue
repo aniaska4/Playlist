@@ -7,7 +7,7 @@
 <script>
 import Playlist from "@/components/Playlist.vue"
 export default {
-  
+
   components: {
     'app-playlist': Playlist
   },
@@ -31,8 +31,8 @@ body {
   width: 50%;
   margin: 30px 20px 30px 20px;
 }
-// .is-active {
-//   border: 1px solid rgb(41, 38, 38)
-// }
+.is-active {
+  background-color: white
+}
 </style>
 

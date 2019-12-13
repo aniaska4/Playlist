@@ -1,19 +1,23 @@
 <template lang="pug">
     .picture.box
-        .picture__pictures
+        .picture__pictures(:src="image")
             .picture__taskbarOne.task
                 .picture__navbuttons
-                    .oneBut
+                    .navbuttons__oneBut
                         img()
-                    .twoBut
+                    .navbuttons__twoBut
                         img()
-                    .treeBut
+                    .navbuttons__treeBut
                         img()
                 .picture__burgerMenu(v-on:click="$emit('welcome')")
                     span
                     span
                     span
             .picture__taskbarTwo.task
+                .taskbarTwo__artist
+                    span {{ artist }}
+                .taskbarTwo__songTitle
+                    span {{ title }}
         .picture__buttons
             .picture__tinySlideBar
             .picture__img
@@ -49,6 +53,18 @@ export default {
         artist: {
             type: String,
             default: ''
+        },
+        image: {
+            type: String,
+            default: '',
+        }
+    },
+
+    data() {
+        return {
+            playing: false,
+            show: true,
+        showList: true,
         }
     },
 
@@ -61,15 +77,6 @@ export default {
         }
     },
 
-    data() {
-        return {
-            playing: false,
-            show: true,
-            showList: true,
-            // show_component: true,
-        }
-    },
-
     methods: {
         play() {
         this.playing = true;
@@ -77,7 +84,7 @@ export default {
         pause() {
         this.playing = false;
      },
-     
+
      someMethod() {
          this.$emit('signal')
      }
@@ -122,6 +129,20 @@ export default {
         .picture__taskbarTwo{
             border-top: 1px solid black;
             border-bottom: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.5;
+            .taskbarTwo__artist {  
+                font-weight: 600;
+                color: white;
+                text-transform: uppercase;
+            }
+            .taskbarTwo__songTitle {
+                color: white;
+                font-size: 140xp
+            }
         }
         .task{
             height: 60px;
@@ -148,8 +169,7 @@ export default {
                 top: -13px;
                 right: 60px;
                 background-color: white;
-
-border-radius: 50%;
+                border-radius: 50%;
             }
         }
             

@@ -7,6 +7,8 @@
                 PictureList(
                     @welcome="isSongListOpen = true"
                     v-bind="selectedSong"
+                    @nextSong="nextSong"
+                    @prevSong="prevSong"
                 )
                 transition(name="slide")
                     SongsList(
@@ -56,18 +58,13 @@ export default {
         },
         prevSong() {
             const prevSongIndex = this.currentSongIndex - 1;
-            if (prevSongIndex < this.songs.lenght - 1) {
+            if (prevSongIndex < this.songs.lenght + 1) {
                 this.currentSongIndex -= 1;
             }
             else {
                 this.currentSongIndex = 0;
             }
         }
-    },
-
-    components: {
-        PictureList,
-        SongsList
     },
 
     beforeMount() {
@@ -81,7 +78,14 @@ export default {
             .finally(() => {
                 this.isLoading = false;
             });
-    }
+    },
+
+    components: {
+        PictureList,
+        SongsList
+    },
+
+    
 }
 </script>
 
