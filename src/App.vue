@@ -32,7 +32,9 @@ body {
   margin: 30px 20px 30px 20px;
 }
 .is-active {
-  background-color: white
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 </style>
 

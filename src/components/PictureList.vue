@@ -121,7 +121,7 @@ export default {
                 span{
                     width: 20px;
                     height: 3px;
-                    background-color: white;
+                    background-color: rgb(141, 139, 161);
                     margin: 2px;
                 }
             }

@@ -29,6 +29,10 @@ export default {
     name: "SongsList",
 
     props: {
+        currentSongIndex: {
+            type: Number,
+            required: true,
+        },
         isOpen: {
             type: Boolean,
             required: true
@@ -77,8 +81,7 @@ export default {
                     top: 6px;
                     left: 6px;
                 }
-            }        
-
+            } 
         }
         .songs__title {
             width: 70%;
