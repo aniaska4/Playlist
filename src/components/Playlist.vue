@@ -3,7 +3,6 @@
     .container
         .mainBox           
             .violetBox
-                | {{ currentSongIndex }}
                 PictureList(
                     @welcome="isSongListOpen = true"
                     v-bind="selectedSong"
@@ -48,26 +47,24 @@ export default {
         selectSong(index) {
             this.currentSongIndex = index;
         },
-        nextSong() {
-            const nextSongIndex = this.currentSongIndex + 1;
-            if (nextSongIndex < this.songs.lenght - 1) {
-                this.currentSongIndex += 1;
-            }
-            else {
-                this.currentSongIndex = 0;
-            }
-            console.log("Ania")
-        },
-        prevSong() {
-            const prevSongIndex = this.currentSongIndex - 1;
-            if (prevSongIndex < this.songs.lenght + 1) {
-                this.currentSongIndex -= 1;
-            }
-            else {
-                this.currentSongIndex = 0;
-            }
-            console.log("Frania")
-        }
+        // nextSong() {
+        //     const nextSongIndex = this.currentSongIndex + 1;
+        //     if (nextSongIndex < this.songs.lenght - 1) {
+        //         this.currentSongIndex += 1;
+        //     }
+        //     else {
+        //         this.currentSongIndex = 0;
+        //     }
+        // },
+        // prevSong() {
+        //     const prevSongIndex = this.currentSongIndex - 1;
+        //     if (prevSongIndex < this.songs.lenght + 1) {
+        //         this.currentSongIndex -= 1;
+        //     }
+        //     else {
+        //         this.currentSongIndex = 0;
+        //     }
+        // }
     },
 
     beforeMount() {

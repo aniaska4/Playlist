@@ -236,6 +236,10 @@ export default {
                     background-color: #6A5C9C;
                     margin: 5px;
                     position: relative;
+                    border-left: 6px solid #f3f3f3;
+                    border-right: 6px solid  #c9c9c9;
+                    border-top: 6px solid #c9c9c9;
+                    border-bottom: 6px solid #f3f3f3;
                     .play{
                         border-top: 15px solid transparent;
                         border-left: 22px solid white;
