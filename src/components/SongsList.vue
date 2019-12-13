@@ -45,17 +45,18 @@ export default {
 
     data() {
         return {
-            
+
         }
     }    
 }
 </script>
 
 <style lang="scss" scoped>
+@import "../style/variables.scss";
 .songs {
     display: flex;
     flex-direction: column;
-    background-color: #E7E6ED;
+    background-color: $backgroundBox;
     color: #372A53;
     .songs__titleBox{
         display: flex;
@@ -63,7 +64,7 @@ export default {
         align-items: center;
         width: 100%;
         height: 50px;
-        color: #6A5C9C;
+        color: $buttonColor;
         font-size: 600;
         .songs__arrow{
             width: 30%;

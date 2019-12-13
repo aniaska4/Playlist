@@ -111,9 +111,9 @@ export default {
             width: 100%;
             height: 100%;
             background:
-            linear-gradient(217deg, rgba(10, 0, 15, 0.8), rgba(10, 0, 15, 0) 70.71%),
-            linear-gradient(127deg, rgba(226, 255, 226, 0.8), rgba(224, 224, 224, 1) 70.71%),
-            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);            
+            linear-gradient(217deg, rgba(10, 0, 15, 0.8), rgba(242, 242, 242, 0.11) 70.71%), 
+            linear-gradient(127deg, rgba(82, 68, 147, 0.8), #5e4354 70.71%), 
+            linear-gradient(336deg, rgb(90, 25, 168), rgba(0, 0, 255, 0) 70.71%);
         }
     }
 }

@@ -26,7 +26,6 @@ body {
 }
 
 .box {
-  border: 1px solid black;
   border-radius: 25px;
   width: 50%;
   margin: 30px 20px 30px 20px;

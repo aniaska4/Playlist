@@ -94,6 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style/variables.scss";
 .picture {
     display: flex;
     flex-direction: column;
@@ -102,8 +103,10 @@ export default {
         flex-direction: column;
         justify-content: space-between;    
         height: 70%;
-        .picture__taskbarOne {
-            border-bottom: 1px solid black;            
+        background-color: #ececec;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        .picture__taskbarOne {            
             border-radius: 25px 25px 0 0;
             display: flex;
             align-items: center;
@@ -127,8 +130,6 @@ export default {
             }
         }
         .picture__taskbarTwo{
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -146,7 +147,7 @@ export default {
         }
         .task{
             height: 60px;
-            background-color: rgba(55, 56, 56, 0.144);
+            background-color: rgba(98, 100, 100, 0.37)
         }
 
     }
@@ -176,7 +177,7 @@ export default {
         .picture__button {
             display: flex;
             flex-direction: row;
-            background-color:#E7E6ED;
+            background-color:$backgroundBox;
             justify-content: center;
             align-items: center;
             height: 100%;
@@ -202,12 +203,11 @@ export default {
                 justify-content: space-between;
                 justify-content: center;
                 align-items: center;
-                // padding-top: 20px;
                 .prev {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
-                    background-color: #6A5C9C;
+                    background-color: $buttonColor;
                     margin: 5px;
                     position: relative;
                     border: none;
@@ -233,7 +233,7 @@ export default {
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
-                    background-color: #6A5C9C;
+                    background-color: $buttonColor;
                     margin: 5px;
                     position: relative;
                     border-left: 6px solid #f3f3f3;
@@ -247,7 +247,7 @@ export default {
                         position: absolute;
                         top: 9px;
                         left: 17px;
-                        background-color: #6A5C9C;
+                        background-color: $buttonColor;
                         padding-left: 0;
                         padding-right: 0;
                         border-right-width: 0;
@@ -255,7 +255,7 @@ export default {
                     }                        
                     .pause{
                         position: relative;
-                        background-color: #6A5C9C;
+                        background-color: $buttonColor;
                         border: none;
                         top: 18px;
                         left: 10px;
@@ -284,7 +284,7 @@ export default {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
-                    background-color: #6A5C9C;
+                    background-color: $buttonColor;
                     margin: 5px;
                     position:relative;
                     border: none;
