@@ -4,19 +4,17 @@
         .mainBox           
             .violetBox
                 PictureList(
-                    @welcome="isSongListOpen = true"
+                    @welcome="isMovieListOpen = true"
                     v-bind="selectedSong"
-                    @nextSong="nextSong"
-                    @prevSong="prevSong"
                 )
                 transition(name="slide")
                     SongsList(
-                        @welcome="isSongListOpen = true"
-                        @close="isSongListOpen = false"
+                        @welcome="isMovieListOpen = true"
+                        @close="isMovieListOpen = false"
                         @selectSong="selectSong"
-                        :is-open="isSongListOpen"
-                        :songs="songs"
-                        :currentSongIndex="currentSongIndex"
+                        :is-open="isMovieListOpen"
+                        :movies="movies"
+                        :currentMovieIndex="currentMovieIndex"
                     )
 </template>
 
@@ -28,24 +26,24 @@ export default {
 
     data () {
         return {
-            isSongListOpen: false,
-            currentSongIndex: 0,
+            isMovieListOpen: false,
+            currentMovieIndex: 0,
         }
     },
 
     computed: {
-        songs() {
-            return this.$store.state.songs;
+        movies() {
+            return this.$store.state.movies;
         },
 
         selectedSong() {
-            return this.songs[this.currentSongIndex];
+            return this.movies[this.currentMovieIndex];
         }
     },
 
     methods: {
         selectSong(index) {
-            this.currentSongIndex = index;
+            this.currentMovieIndex = index;
         },
         // nextSong() {
         //     const nextSongIndex = this.currentSongIndex + 1;

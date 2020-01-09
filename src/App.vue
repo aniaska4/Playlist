@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-playlist></app-playlist>
+    <app-filmlist></app-filmlist>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import Playlist from "@/components/Playlist.vue"
 export default {
 
   components: {
-    'app-playlist': Playlist
+    'app-filmlist': Playlist
   },
 
   name: "App"

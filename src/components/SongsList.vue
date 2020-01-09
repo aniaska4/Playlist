@@ -5,19 +5,19 @@
                     .songs__circle
                         img(src="@/../public/image/arrow.jpg")
                 .songs__title
-                    h3 Playlist
+                    h3 Movielist
             .songs__lists(
-                v-for="(song, index) in songs"
-                :key="song.artist + song.title"
+                v-for="(mov, index) in movies"
+                :key="mov.id"
                 @click="$emit('selectSong', index)"
-                :class="{ 'is-active': index === currentSongIndex }"
+                :class="{ 'is-active': index === currentMovieIndex }"
             )
                 .songs__one
                     .songs__artist
-                        span.time {{ song.time }} |
-                        span.name {{ song.artist }}
+                        span.time {{ mov.vote_count }} |
+                        span.name {{ mov.release_date }}
                     .songs__title
-                        span {{ song.title }}
+                        span {{ mov.title }}
                 .songs__two
                     .songs__share
                         img(src="@/../public/image/share.png")
@@ -29,7 +29,7 @@ export default {
     name: "SongsList",
 
     props: {
-        currentSongIndex: {
+        currentMovieIndex: {
             type: Number,
             required: true,
         },
@@ -37,17 +37,11 @@ export default {
             type: Boolean,
             required: true
         },
-        songs: {
+        movies: {
             type: Array,
             required: true
         }
-    },
-
-    data() {
-        return {
-
-        }
-    }    
+    },   
 }
 </script>
 
@@ -58,6 +52,7 @@ export default {
     flex-direction: column;
     background-color: $backgroundBox;
     color: #372A53;
+    overflow: auto;
     .songs__titleBox{
         display: flex;
         justify-content: center;
@@ -104,9 +99,6 @@ export default {
                 flex-direction: row;
                 padding-bottom: 10px;
                 font-size: 12px;
-            }
-            .songs__title {
-                
             }
         }
         .songs__two {

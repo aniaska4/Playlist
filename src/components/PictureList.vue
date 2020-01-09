@@ -1,6 +1,6 @@
 <template lang="pug">
     .picture.box
-        .picture__pictures(:src="image")
+        .picture__pictures(:src="'https://image.tmdb.org/t/p/w500' + poster_path")
             .picture__taskbarOne.task
                 .picture__navbuttons
                     .navbuttons__oneBut
@@ -54,7 +54,7 @@ export default {
             type: String,
             default: ''
         },
-        image: {
+        poster_path: {
             type: String,
             default: '',
         }
@@ -72,7 +72,7 @@ export default {
         songs() {
             return this.$store.state.songs;
         },
-         paused() {
+        paused() {
             return !this.playing;
         }
     },
