@@ -96,7 +96,7 @@ export default {
     justify-content: center;
     align-items: center;
     .mainBox{
-        width: 750px;
+        max-width: 750px;
         height: 600px;
         display: flex;
         background-color: #ffffff;
@@ -127,7 +127,19 @@ export default {
   opacity: 0;
 }
 
+@media screen and (max-width: 768px){    
+    .playlist{
+        height: 100%;
+        .mainBox{
+        height: 1200px; 
+         .violetBox{
+        flex-direction: column;
 
+            }          
+        }
 
+    }
+    
+}
 </style>
 

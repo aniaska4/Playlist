@@ -35,5 +35,11 @@ body {
   padding: 10px;
   border-radius: 5px;
 }
+@media screen and (max-width: 768px){ 
+    .box{
+      width:80%;
+    }
+
+}
 </style>
 

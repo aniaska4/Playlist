@@ -1,6 +1,6 @@
 <template lang="pug">
     .picture.box
-        .picture__pictures(:src="'https://image.tmdb.org/t/p/w500' + poster_path")
+        .picture__pictures            
             .picture__taskbarOne.task
                 .picture__navbuttons
                     .navbuttons__oneBut
@@ -13,6 +13,8 @@
                     span
                     span
                     span
+            .picture__movie_pic
+                    img(:src="'https://image.tmdb.org/t/p/w500' + poster_path")
             .picture__taskbarTwo.task
                 .taskbarTwo__artist
                     span {{ artist }}
@@ -106,6 +108,10 @@ export default {
         background-color: #ececec;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
+        img{
+            max-width: 100%;
+            height: auto;
+        }
         .picture__taskbarOne {            
             border-radius: 25px 25px 0 0;
             display: flex;
@@ -127,6 +133,15 @@ export default {
                     background-color: rgb(141, 139, 161);
                     margin: 2px;
                 }
+            }
+        }
+        .picture__movie_pic {
+            height: 80%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            img{
+                height: 100%;
             }
         }
         .picture__taskbarTwo{
@@ -310,6 +325,12 @@ export default {
 
             }
         }
+    }
+
+}
+@media screen and (max-width: 768px){ 
+    .picture {
+        height: 45%;
     }
 
 }
