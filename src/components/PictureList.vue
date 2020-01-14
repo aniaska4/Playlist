@@ -120,7 +120,7 @@ export default {
                 display: flex;
                 flex-direction: column;
                 width: 30%;
-                height: 30px;
+                height: 32px;
                 span{
                     width: 20px;
                     height: 3px;
