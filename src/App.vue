@@ -38,6 +38,7 @@ body {
 @media screen and (max-width: 768px){ 
     .box{
       width:80%;
+      height: 40%;
     }
 
 }

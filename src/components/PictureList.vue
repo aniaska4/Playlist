@@ -330,7 +330,7 @@ export default {
 }
 @media screen and (max-width: 768px){ 
     .picture {
-        height: 45%;
+        height: 30%;
     }
 
 }
